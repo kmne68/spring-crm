@@ -13,7 +13,7 @@ import com.kmne68.springdemo.entity.Customer;
 
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO {
+public class CustomerDAOImplementation implements CustomerDAO {
 	
 	// inject the session factory
 	@Autowired
@@ -21,7 +21,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	
 	@Override
-	@Transactional
 	public List<Customer> getCustomers() {
 		
 		// get current hibernate session
