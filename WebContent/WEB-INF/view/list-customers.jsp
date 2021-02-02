@@ -40,7 +40,7 @@
 	          <td> ${tempCustomer.firstName} </td>
 	          <td> ${tempCustomer.lastName} </td>
 	          <td> ${tempCustomer.email} </td>
-	        <tr>
+	      </tr>
           
        </c:forEach>   
                   

@@ -20,12 +20,12 @@ th {
 
 tr {
 	border-top:1px solid gray;
-	text-align:center;	
+	text-align:center;
 }
- 
-tr:nth-child(even) {background: #FFFFFF}
-tr:nth-child(odd) {background: #BBBBBB}	
- 
+
+tr:nth-child(odd) {background-color: #bbbbbb;}
+tr:nth-child(even) {background-color: #ffffff;}
+
 #wrapper {width: 100%; margin-top: 0px; }
 #header {width: 70%; background: #09c332; margin-top: 0px; padding:15px 0px 15px 15px;}
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}
