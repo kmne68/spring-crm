@@ -23,6 +23,9 @@
 		
 		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
 		
+			<!-- associate this data with a customer using a hidden form field with the customer's ID -->
+			<form:hidden path="id"/>
+		
 			<table>
 				<tbody>
 					<tr>

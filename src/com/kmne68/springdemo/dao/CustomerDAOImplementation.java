@@ -27,7 +27,7 @@ public class CustomerDAOImplementation implements CustomerDAO {
 		Session session = sessionFactory.getCurrentSession();
 		
 		// create query
-		Query<Customer> query = session.createQuery("from Customer", Customer.class);
+		Query<Customer> query = session.createQuery("from Customer order by lastName", Customer.class);
 		
 		// execute query to get result list
 		List<Customer> customers = query.getResultList();
@@ -44,8 +44,19 @@ public class CustomerDAOImplementation implements CustomerDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// save the customer
-		currentSession.save(customer);
+		currentSession.saveOrUpdate(customer);
 		
+	}
+
+
+	@Override
+	public Customer getCustomer(int id) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Customer customer = currentSession.get(Customer.class, id);
+		
+		return customer;
 	}	
 
 
