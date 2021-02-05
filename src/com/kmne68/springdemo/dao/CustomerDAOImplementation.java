@@ -57,6 +57,19 @@ public class CustomerDAOImplementation implements CustomerDAO {
 		Customer customer = currentSession.get(Customer.class, id);
 		
 		return customer;
+	}
+
+
+	@Override
+	public void deleteCustomer(int id) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query query = currentSession.createQuery("delete from Customer where id=:customerId");
+		query.setParameter("customerId", id);
+		
+		query.executeUpdate();
+		
 	}	
 
 
