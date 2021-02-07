@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kmne68.springdemo.entity.Customer;
+import com.kmne68.springdemo.util.SortUtils;
 
 
 @Repository
@@ -91,6 +92,36 @@ public class CustomerDAOImplementation implements CustomerDAO {
 		}
 		
 		// execute query an get result list
+		List<Customer> customers = query.getResultList();
+		
+		return customers;
+	}
+
+
+	@Override
+	public List<Customer> getCustomers(int sortField) {
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		String fieldName = null;
+		
+		switch(sortField) {
+			case SortUtils.FIRST_NAME:
+				fieldName = "firstName";
+				break;
+			case SortUtils.LAST_NAME:
+				fieldName = "lastName";
+				break;
+			case SortUtils.EMAIL:
+				fieldName = "email";
+				break;
+			default:
+				fieldName = "lastName";
+		}
+		
+		String queryString = "FROM Customer ORDER BY " + fieldName;
+		Query<Customer> query = currentSession.createQuery(queryString, Customer.class);
+		
 		List<Customer> customers = query.getResultList();
 		
 		return customers;

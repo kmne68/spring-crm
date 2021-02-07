@@ -16,4 +16,6 @@ public interface CustomerService {
 
 	public List<Customer> searchCustomers(String searchName);
 	
+	public List<Customer> getCustomers(int sortField);
+	
 }
