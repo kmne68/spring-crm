@@ -35,7 +35,7 @@ public class CustomerController {
 		// check for a sort field
 		if(sort != null) {
 			int sortField = Integer.parseInt(sort);
-			customers = customerService.getCustomers();
+			customers = customerService.getCustomers(sortField);
 		}
 		else {
 			// if no sort field is provided default to sorting by last name
