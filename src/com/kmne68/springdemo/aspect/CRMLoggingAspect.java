@@ -3,6 +3,7 @@ package com.kmne68.springdemo.aspect;
 import java.util.logging.Logger;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -49,13 +50,34 @@ public class CRMLoggingAspect {
 	@Before("forAppFlow()")
 	public void before(JoinPoint joinPoint) {
 		
+		// display method we're calling
 		String method = joinPoint.getSignature().toShortString();
 		logger.info("=====>> in @Before: calling method: " + method);
 		
+		// display the arguments to the method
+		// get the arguments
+		Object[] args = joinPoint.getArgs();
+		
+		// loop through and display the arguments
+		for(Object tempArg : args) {
+			logger.info("----->> argument: " + tempArg);
+		}
+		
 	}
 	
-	
-	
 	// add @AfterReturning advice
+	@AfterReturning(
+			pointcut="forAppFlow()",
+			returning="result"
+			)
+	public void afterReturning(JoinPoint joinPoint, Object result) {
+		
+		// display method we are returning from
+		String method = joinPoint.getSignature().toShortString();
+		logger.info("=====>> in @AfterReturning: from method: " + method);
+		
+		// display data returned
+		logger.info("=====>> result: " + result);
+	}
 	
 }
